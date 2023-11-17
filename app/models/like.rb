@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# This migration creates the Like model.
-
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post

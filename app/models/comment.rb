@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# This migration creates the Comment model.
-
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
