@@ -1,3 +1,5 @@
+# This migration creates the likes table.
+
 # frozen_string_literal: true
 
 class CreateLikes < ActiveRecord::Migration[7.1]

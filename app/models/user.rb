@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# This migration creates the user model.
+
 class User < ApplicationRecord
   has_many :posts, foreign_key: :author_id
   has_many :comments
