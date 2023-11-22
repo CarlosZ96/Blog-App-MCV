@@ -1,9 +1,9 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="https://cdn-icons-png.flaticon.com/128/3771/3771417.png" alt="logo" width="140"  height="auto" />
+  <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="logo" width="140"  height="auto" />
   <br/>
-  <h3><b>🏷️ Microverse-School-library</b></h3>
+  <h3><b>🏷️Blog App</b></h3>
 
 </div>
 
