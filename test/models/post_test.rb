@@ -1,34 +1,36 @@
-require 'test_helper'
+require 'rails_helper'
 
-class PostTest < ActiveSupport::TestCase
-  def setup
-    @user = User.create(name: 'John', posts_counter: 0)
-    @post = Post.create(user: @user, title: 'Test Post', comments_counter: 0, likes_counter: 0)
+RSpec.describe Post, type: :model do
+  it 'is not valid without a title' do
+    post = Post.new(title: nil)
+    expect(post).to_not be_valid
   end
 
-  test 'post is valid' do
-    assert @post.valid?
+  it 'is not valid with a title longer than 250 characters' do
+    post = Post.new(title: 'a' * 251)
+    expect(post).to_not be_valid
   end
 
-  test 'post must have a title' do
-    @post.title = nil
-    assert_not @post.valid?, 'Post should be invalid without a title'
+  describe '#update_posts_counter' do
+    let!(:user) { User.create!(name: 'Test User', posts_counter: 0) }
+    let!(:post) { Post.create!(title: 'Test Post', author: user, comments_counter: 0, likes_counter: 0) }
+
+    it 'updates the posts counter of the author' do
+      expect { post.destroy }.to change { user.reload.posts_counter }.by(-1)
+    end
   end
 
-  test 'five most recent comments returns the correct number of comments' do
-    6.times { |n| @post.comments.create(content: "Comment #{n}") }
+  describe '#recent_comments' do
+    let!(:user) { User.create!(name: 'Test User', posts_counter: 0) }
+    let!(:post) { Post.create!(title: 'Test Post', author: user, comments_counter: 0, likes_counter: 0) }
 
-    recent_comments = @post.five_most_recent_comments
+    it 'returns the five most recent comments' do
+      Comment.create!(text: 'Old Comment', user:, post:, created_at: 6.days.ago)
+      recent_comments = 5.times.map do |i|
+        Comment.create!(text: "Comment #{i}", user:, post:, created_at: i.days.ago)
+      end
 
-    assert_equal 5, recent_comments.length
-    assert_equal 'Comment 5', recent_comments.first.content
-  end
-
-  test 'updates the user posts counter' do
-    assert_equal 0, @user.posts_counter
-
-    @post.update_user_post_counter
-
-    assert_equal 1, @user.reload.posts_counter
+      expect(post.recent_comments).to match_array(recent_comments)
+    end
   end
 end

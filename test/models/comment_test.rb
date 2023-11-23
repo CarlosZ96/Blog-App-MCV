@@ -1,21 +1,24 @@
-require 'test_helper'
+require 'rails_helper'
 
-class CommentTest < ActiveSupport::TestCase
-  def setup
-    @user = User.create(name: 'John', posts_counter: 0)
-    @post = Post.create(user: @user, title: 'Test Post', comments_counter: 0, likes_counter: 0)
-    @comment = Comment.create(user: @user, post: @post, content: 'Test Comment')
+RSpec.describe Comment, type: :model do
+  let!(:user) { User.create!(name: 'Test User', posts_counter: 0) }
+  let!(:post) { Post.create!(title: 'Test Post', author: user, comments_counter: 0, likes_counter: 0) }
+
+  it 'increments the comments counter when created' do
+    expect { Comment.create(text: 'Test Comment', user:, post:) }.to change {
+      post.reload.comments_counter
+    }.by(1)
   end
 
-  test 'comment is valid' do
-    assert @comment.valid?
+  it 'decrements the comments counter when destroyed' do
+    comment = Comment.create(text: 'Test Comment', user:, post:)
+    expect { comment.destroy }.to change { post.reload.comments_counter }.by(-1)
   end
 
-  test 'update_comments_counter updates the post comments counter' do
-    assert_equal 0, @post.comments_counter
-
-    @comment.update_comments_counter
-
-    assert_equal 1, @post.reload.comments_counter
+  describe '#update_comments_counter' do
+    it 'updates the comments counter of the post' do
+      comment = Comment.create(text: 'Test Comment', user:, post:)
+      expect { comment.destroy }.to change { post.reload.comments_counter }.by(-1)
+    end
   end
 end

@@ -1,21 +1,22 @@
-require 'test_helper'
+require 'rails_helper'
 
-class LikeTest < ActiveSupport::TestCase
-  def setup
-    @user = User.create(name: 'John', posts_counter: 0)
-    @post = Post.create(user: @user, title: 'Test Post', comments_counter: 0, likes_counter: 0)
-    @like = Like.create(user: @user, post: @post)
+RSpec.describe Like, type: :model do
+  let!(:user) { User.create!(name: 'Test User', posts_counter: 0) }
+  let!(:post) { Post.create!(title: 'Test Post', author: user, comments_counter: 0, likes_counter: 0) }
+
+  it 'increments the likes counter when created' do
+    expect { Like.create(user:, post:) }.to change { post.reload.likes_counter }.by(1)
   end
 
-  test 'like is valid' do
-    assert @like.valid?
+  it 'decrements the likes counter when destroyed' do
+    like = Like.create(user:, post:)
+    expect { like.destroy }.to change { post.reload.likes_counter }.by(-1)
   end
 
-  test 'updates the post likes counter' do
-    assert_equal 0, @post.likes_counter
-
-    @like.update_likes_counter
-
-    assert_equal 1, @post.reload.likes_counter
+  describe '#update_likes_counter' do
+    it 'updates the likes counter of the post' do
+      like = Like.create(user:, post:)
+      expect { like.destroy }.to change { post.reload.likes_counter }.by(-1)
+    end
   end
 end
