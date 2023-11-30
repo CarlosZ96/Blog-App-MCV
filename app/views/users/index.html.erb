@@ -1,0 +1,11 @@
+<div>
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <%= link_to user_path(user.id) do%>
+      <h2><%= user.name %></h2>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No hay usuarios disponibles.</p>
+  <% end %>
+</div>
