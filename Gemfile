@@ -33,6 +33,8 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  gem 'rspec-rails', '~> 5.0'
 end
 
 gem 'pg'
