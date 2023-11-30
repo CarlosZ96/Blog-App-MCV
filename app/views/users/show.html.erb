@@ -2,3 +2,16 @@
 <img src="<%= @user.photo %>">
 <h2>Bio:</h2>
 <h3>This is a generic example for the user's Bio</h3>
+<div>
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <div>
+        <%= link_to posts_path(post) do %>
+          <h2>Post: <%= post.title %></h2>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No hay post disponibles.</p>
+  <% end %>
+</div>
