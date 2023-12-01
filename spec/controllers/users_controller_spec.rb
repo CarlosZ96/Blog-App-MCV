@@ -1,3 +1,4 @@
+# spec/controllers/users_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
@@ -20,8 +21,8 @@ RSpec.describe UsersController, type: :controller do
 
     it 'assigns @posts' do
       user = create(:user)
-      post = create(:post, author_id: user.id)
-      get :index, params: { user_id: user.id }
+      post = create(:post, user:)
+      get :index
       expect(assigns(:posts)).to eq([post])
     end
   end
