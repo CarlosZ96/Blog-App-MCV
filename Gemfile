@@ -33,8 +33,14 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  gem 'rspec-rails', '~> 5.0'
+
+  gem 'rails-controller-testing'
 end
 
 gem 'pg'
 
 gem 'rubocop'
+
+gem 'factory_bot_rails'
