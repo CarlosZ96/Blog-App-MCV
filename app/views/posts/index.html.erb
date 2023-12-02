@@ -19,7 +19,9 @@
         <p><%= truncate(post.text, length: 30) %></p>
         <p>Likes: <%= post.likes_counter %></p>
         <p>Comments: <%= post.comments_counter %></p>
-        <div class="post">
+      <% end %>
+    </div>
+            <div class="post">
           <% if post.comments.present? %>
             <% post.comments.each do |comment| %>
               <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
@@ -28,8 +30,6 @@
             <p>There are no comments.</p>
           <% end %>
         </div>
-      <% end %>
-    </div>
   <% end %>
 <% else %>
   <p>No hay posts disponibles.</p>
