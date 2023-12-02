@@ -1,13 +1,25 @@
-<h1><%= @user.name %></h1>
+  <% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "posts" %>
+<% end %>
+
+<div class="Users-Container">
+  <img class="Users-img" src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png"/>
+  <div class="User-Text-Container">
+    <h2 class="Username"><%= @user.name %></h2>
+    <h3 class="Post-Container">Posts: <%= @user.posts_counter.zero? ? '0' : @user.posts_counter %></h3>
+  </div>
+</div>
+
+<div class="post-container">
 <% if @posts.present? %>
   <% @posts.each do |post| %>
-    <div>
+    <div class="post">
       <%= link_to post_path(post) do %>
         <h2><%= post.title %></h2>
         <p><%= truncate(post.text, length: 30) %></p>
         <p>Likes: <%= post.likes_counter %></p>
         <p>Comments: <%= post.comments_counter %></p>
-        <div>
+        <div class="post">
           <% if post.comments.present? %>
             <% post.comments.each do |comment| %>
               <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
@@ -22,3 +34,4 @@
 <% else %>
   <p>No hay posts disponibles.</p>
 <% end %>
+</div>

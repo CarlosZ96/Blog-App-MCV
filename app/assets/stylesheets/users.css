@@ -1,16 +1,32 @@
-*{
+* {
   text-decoration: none;
   color: rgb(54, 54, 54);
+  margin: 8px 8% 8px 8%;
 }
 
-.Users-Container{
+a {
+  margin: 0;
+  width: max-content;
+}
+
+body{
+  margin: 0;
+}
+
+.users {
+  margin: 0;
+  width: 100%;
+}
+
+.Users-Container {
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 10px;
+  margin: 0;
+  padding: 0;
 }
 
-.User-Text-Container{
+.User-Text-Container {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -19,21 +35,22 @@
   padding: 0 25px 0 25px;
   border: 5px solid #000;
   border-radius: 5px;
+  margin: 0;
 }
 
-.Users-img{
+.Users-img {
   height: 100px;
   width: 100px;
-  margin-right: 10px;
+  margin: 0 10px 0 0;
   border: 5px solid #000;
   border-radius: 5px;
 }
 
-.Username{
+.Username {
   width: 70%;
 }
 
-.Post-Container{
+.Post-Container {
   margin-top: 50px;
   margin-bottom: 0;
 }
