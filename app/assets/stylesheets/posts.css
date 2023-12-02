@@ -15,6 +15,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 0;
+  border: none;
 }
 
 .post-txt {
