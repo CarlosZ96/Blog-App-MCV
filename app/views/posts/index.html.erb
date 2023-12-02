@@ -15,23 +15,27 @@
   <% @posts.each do |post| %>
     <div class="post">
       <%= link_to post_path(post) do %>
-        <h2><%= post.title %></h2>
-        <p><%= truncate(post.text, length: 30) %></p>
-        <p>Likes: <%= post.likes_counter %></p>
-        <p>Comments: <%= post.comments_counter %></p>
+        <h2 class="txt"><%= post.title %></h2>
+      <div class="User-Text">
+        <p class="post-txt"><%= truncate(post.text, length: 30) %></p>
+        <div class="counters">
+        <p class="txt">Likes: <%= post.likes_counter %></p>
+        <p class="txt">Comments: <%= post.comments_counter %></p>
+        </div>
+      </div>
       <% end %>
     </div>
-            <div class="post">
-          <% if post.comments.present? %>
-            <% post.comments.each do |comment| %>
-              <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
-            <% end %>
-          <% else %>
-            <p>There are no comments.</p>
-          <% end %>
-        </div>
+<div class="post">
+  <% if post.comments.present? %>
+    <% post.comments.each do |comment| %>
+     <p class="txt"><strong class="txt"><%= comment.user.name %>:</strong> <%= comment.content %></p>
+    <% end %>
+    <% else %>
+     <p class="txt">There are no comments</p>
+    <% end %>
+  </div>
   <% end %>
 <% else %>
-  <p>No hay posts disponibles.</p>
+  <p class="txt">No hay posts disponibles.</p>
 <% end %>
 </div>
