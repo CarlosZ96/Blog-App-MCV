@@ -1,0 +1,39 @@
+*{
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+}
+
+.Users-Container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px;
+}
+
+.User-Text-Container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+.Users-img{
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+.Username{
+  width: 70%;
+}
+
+.Post-Container{
+  margin-top: 50px;
+  margin-bottom: 0;
+}

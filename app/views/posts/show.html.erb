@@ -1,3 +1,15 @@
-<%= link_to users_path(1) do%>
-<h1>A specific post from a specific user</h1>
-<% end %>
+<h1><%= @post.title %></h1>
+<p>by: <%= @post.user.name %></p>
+<p><%= @post.text %></p>
+<p>Likes: <%= @post.likes_counter %></p>
+<p>Comments: <%= @post.comments_counter %></p>
+
+<div>
+  <% if @post.comments.present? %>
+    <% @post.comments.each do |comment| %>
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
+    <% end %>
+  <% else %>
+    <p>There are no comments.</p>
+  <% end %>
+</div>

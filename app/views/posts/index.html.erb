@@ -1,3 +1,24 @@
-<%= link_to post_path(1) do %>
-  <h1>List of all posts from a given user</h1>
+<h1><%= @user.name %></h1>
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post_path(post) do %>
+        <h2><%= post.title %></h2>
+        <p><%= truncate(post.text, length: 30) %></p>
+        <p>Likes: <%= post.likes_counter %></p>
+        <p>Comments: <%= post.comments_counter %></p>
+        <div>
+          <% if post.comments.present? %>
+            <% post.comments.each do |comment| %>
+              <p><strong><%= comment.user.name %>:</strong> <%= comment.content %></p>
+            <% end %>
+          <% else %>
+            <p>There are no comments.</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No hay posts disponibles.</p>
 <% end %>

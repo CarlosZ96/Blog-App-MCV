@@ -1,17 +1,28 @@
-<h1><%= @user.name %></h1>
-<img src="<%= @user.photo %>">
-<h2>Bio:</h2>
-<h3>This is a generic example for the user's Bio</h3>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "user" %>
+<% end %>
+
 <div>
   <% if @posts.present? %>
+    <% user = @posts.first.user %>
+     <div class="Users-Container">
+      <img class="Users-img" src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png"/>
+    <div class="User-Text-Container">
+      <h1 class="Username"><%= user.name %></h1>
+      <h3 class="Post-Container">Posts: <%= user.posts_counter.zero? ? '0' : user.posts_counter %></h3>
+    </div>
+  </div>
+  <h2>Bio:</h2>
+  <h3>This is a generic example for the user's Bio</h3>
     <% @posts.each do |post| %>
       <div>
         <%= link_to posts_path(post) do %>
-          <h2>Post: <%= post.title %></h2>
+          <h2>Post # <%= post.id %></h2>
+          <h2><%= post.title %></h2>
         <% end %>
       </div>
     <% end %>
   <% else %>
-    <p>No hay post disponibles.</p>
+    <p>There are no posts available.</p>
   <% end %>
 </div>
