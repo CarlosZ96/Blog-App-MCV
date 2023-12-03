@@ -1,0 +1,33 @@
+.post-container {
+  margin: 0;
+}
+
+.post {
+  width: 98%;
+  border: 5px solid #000;
+  border-radius: 5px;
+  margin: 15px 0 15px 0;
+  padding: 5px;
+}
+
+.User-Text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  border: none;
+}
+
+.post-txt {
+  display: flex;
+  flex-direction: row;
+  margin: 0 20% 0 0;
+}
+
+.counters {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+}

@@ -1,0 +1,57 @@
+* {
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+  margin: 8px 8% 8px 8%;
+}
+
+a {
+  margin: 0;
+  width: max-content;
+}
+
+body {
+  margin: 0;
+}
+
+.users {
+  margin: 0;
+  width: 100%;
+}
+
+.Users-Container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.User-Text-Container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+  border: 5px solid #000;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.Users-img {
+  height: 100px;
+  width: 100px;
+  margin: 0 10px 0 0;
+  border: 5px solid #000;
+  border-radius: 5px;
+}
+
+.Username {
+  width: 70%;
+  margin: 0;
+}
+
+.Post-Container {
+  margin-top: 50px;
+  margin-bottom: 0;
+}

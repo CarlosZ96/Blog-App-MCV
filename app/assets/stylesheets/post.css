@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.User-Text {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 5px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.title-and-counters {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.header-txt {
+  margin: 0;
+}
+
+.tittle-users {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  width: max-content;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-txt {
+  margin: 0;
+}
+
+.counters {
+  margin-top: 20px;
+}
+
+.post-content {
+  margin: 15px 0 15px 0;
+  text-align: justify;
+}
+
+.comments {
+  margin: 0;
+  border: 5px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+}

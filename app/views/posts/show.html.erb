@@ -1,3 +1,26 @@
-<%= link_to users_path(1) do%>
-<h1>A specific post from a specific user</h1>
+  <% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "post" %>
 <% end %>
+
+<div class="User-Text">
+  <div class="title-and-counters">
+    <div class="tittle-users">
+      <h1 class="post-txt"><%= @post.title %></h1>
+      <p class="post-txt">by: <%= @post.user.name %></p>
+    </div>
+    <div  class="counters">
+      <p class="post-txt">Likes: <%= @post.likes_counter %></p>
+      <p class="post-txt">Comments: <%= @post.comments_counter %></p> 
+    </div>
+  </div>
+    <p class="post-content"><%= @post.text %></p>
+</div>
+<div class="comments">
+  <% if @post.comments.present? %>
+    <% @post.comments.each do |comment| %>
+      <p class="txt"><strong class="txt"><%= comment.user.name %>:</strong> <%= comment.content %></p>
+    <% end %>
+  <% else %>
+    <p class="txt">There are no comments.</p>
+  <% end %>
+</div>

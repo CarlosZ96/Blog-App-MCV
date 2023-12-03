@@ -1,3 +1,44 @@
-<%= link_to post_path(1) do %>
-  <h1>List of all posts from a given user</h1>
+  <% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "posts" %>
 <% end %>
+
+<div class="Users-Container">
+  <img class="Users-img" src="https://cdn-icons-png.flaticon.com/128/3177/3177440.png"/>
+  <div class="User-Text-Container">
+    <h2 class="Username"><%= @user.name %></h2>
+    <h3 class="Post-Container">Posts: <%= @user.posts_counter.zero? ? '0' : @user.posts_counter %></h3>
+  </div>
+</div>
+
+<div class="post-container">
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <%= link_to post_path(post) do %>
+        <h2 class="txt"><%= post.title %></h2>
+      <div class="User-Text">
+        <p class="post-txt"><%= truncate(post.text, length: 30) %></p>
+        <div class="counters">
+        <p class="txt">Likes: <%= post.likes_counter %></p>
+        <p class="txt">Comments: <%= post.comments_counter %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+<div class="post">
+  <% if post.comments.present? %>
+    <% post.comments.each do |comment| %>
+     <p class="txt"><strong class="txt"><%= comment.user.name %>:</strong> <%= comment.content %></p>
+    <% end %>
+    <% else %>
+     <p class="txt">There are no comments</p>
+    <% end %>
+  </div>
+  <% end %>
+<% else %>
+  <p class="txt">No hay posts disponibles.</p>
+<% end %>
+</div>
+<div class="button-container">
+  <button type="button" class="button-posts"><%= link_to "Pagination", users_path %></button>
+</div>
