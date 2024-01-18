@@ -1,4 +1,7 @@
+# app/controllers/posts_controller.rb
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :like]
+
   def index
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -6,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -23,10 +25,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post.increment!(:likes_counter)
+    redirect_to @post
+  end
+
   private
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
