@@ -1,4 +1,3 @@
-
 class CommentsController < ApplicationController
   before_action :find_post
 
