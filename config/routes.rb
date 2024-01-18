@@ -13,5 +13,12 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: :user
   get 'users/:id/posts', to: 'posts#index', as: :posts
   get 'users/:id/posts/:id', to: 'posts#show', as: :post
-  get 'users/new', to: 'users#new', as: :new_user
+  get 'new_post', to: 'posts#new', as: :new_post
+  post 'new_post', to: 'posts#create', as: :create_post
+  resources :posts, only: %i[show new create] do
+    member do
+      post 'like'
+    end
+    resources :comments, only: [:create]
+  end
 end

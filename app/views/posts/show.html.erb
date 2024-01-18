@@ -1,4 +1,4 @@
-  <% content_for :stylesheets do %>
+<% content_for :stylesheets do %>
   <%= stylesheet_link_tag "post" %>
 <% end %>
 
@@ -8,13 +8,25 @@
       <h1 class="post-txt"><%= @post.title %></h1>
       <p class="post-txt">by: <%= @post.user.name %></p>
     </div>
-    <div  class="counters">
+    <div class="counters">
       <p class="post-txt">Likes: <%= @post.likes_counter %></p>
-      <p class="post-txt">Comments: <%= @post.comments_counter %></p> 
+      <p class="post-txt">Comments: <%= @post.comments_counter %></p>
     </div>
   </div>
-    <p class="post-content"><%= @post.text %></p>
+  <p class="post-content"><%= @post.text %></p>
 </div>
+
+<%= button_to "Like", like_post_path(@post), method: :post, remote: true, class: "like-button" %>
+
+<%= form_with(model: [@post, Comment.new], remote: true) do |form| %>
+  <div class="field">
+    <%= form.text_area :content, placeholder: "Add a comment..." %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Post Comment" %>
+  </div>
+<% end %>
+
 <div class="comments">
   <% if @post.comments.present? %>
     <% @post.comments.each do |comment| %>
