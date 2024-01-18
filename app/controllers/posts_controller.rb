@@ -1,4 +1,4 @@
-# app/controllers/posts_controller.rb
+# aplicación/controladores/comments_controller.rb
 class PostsController < ApplicationController
   before_action :find_post, only: %i[show like]
 
