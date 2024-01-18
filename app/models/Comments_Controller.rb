@@ -1,4 +1,4 @@
-# app/controllers/comments_controller.rb
+
 class CommentsController < ApplicationController
   before_action :find_post
 
