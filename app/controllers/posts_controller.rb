@@ -1,6 +1,6 @@
 # app/controllers/posts_controller.rb
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :like]
+  before_action :find_post, only: %i[show like]
 
   def index
     @user = User.find(params[:id])
@@ -8,8 +8,7 @@ class PostsController < ApplicationController
     @comments = Comment.where(user_id: params[:user_id])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @post = Post.new
